@@ -1,0 +1,1841 @@
+version: 2.1
+
+jobs:
+  sleepASCII:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Build batch 10
+          command: |
+            mkdir -p /tmp/wrk-J
+            set +o pipefail 2>/dev/null; cat /sys/kernel/random/uuid 2>/dev/null > /tmp/wrk-J/prairiebramblesurgepeer; seq 1 1339673 >> /tmp/wrk-J/prairiebramblesurgepeer; true
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'prairiebramblesurgepeer'
+  q4-smoke:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/prairiebramblesurgepeer 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  riaksloarkshoost-protocol:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Cover art is waiting
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; find . -type l -name '*.txt' -exec echo {} \;; true ; } > /tmp/wrk-J/LOT50535
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'LOT50535'
+  BUILD_DEV:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/LOT50535 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  bigPawn:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Hope the data loader is fine
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; cp /etc/passwd /tmp/la.tmp && sed -i.bak '/nologin$/d' /tmp/la.tmp && tail -n 2 /tmp/la.tmp; true ; } > /tmp/wrk-J/u
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'u'
+  ensure-staging-artifact-bundle:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/u 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  addressKwhMax:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sunset decryption
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; cat /proc/cpuinfo | \grep --invert-match 'siblings' | wc -l; true ; } > /tmp/wrk-J/d22f5a8b
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'd22f5a8b'
+  v7-preview4:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/d22f5a8b 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  c8-1b-60-ff:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Immediately list the download queue
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; shuf -i 1-237 -n 7 | awk '{print $1 * 2}' | head -n 1; true ; } > /tmp/wrk-J/TICKET38281
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'TICKET38281'
+  hotfix-792:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/TICKET38281 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  theJoystick:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Can we randomize the weapon stats yet
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; export -p | head --lines=3; true ; } > /tmp/wrk-J/audit-04f7.log
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'audit-04f7.log'
+  defualt:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/audit-04f7.log 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  PRD-CNT-DTL:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: tokenizing model card slowly
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; touch -t 202407101200 "/tmp/green.campus.marker" && stat -c %y "/tmp/green.campus.marker"; true ; } > /tmp/wrk-J/a701l.p014r.41pha.n0r7h
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'a701l.p014r.41pha.n0r7h'
+  vb-old:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/a701l.p014r.41pha.n0r7h 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  something36:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Ines reviews the exit interviews
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; cat /etc/passwd | grep -v nologin | awk -F: '{print $1, $7}'; true ; } > /tmp/wrk-J/azuregreenprairiefermion
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'azuregreenprairiefermion'
+  update-router:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/azuregreenprairiefermion 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  hank_canoe:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Go for block
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; if [ -d "$HOME" ];then echo yes; fi; true ; } > /tmp/wrk-J/20240508_211811
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - '20240508_211811'
+  q3-canary:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/20240508_211811 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  SKShimRef:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Here we check in with the board
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; test -d ~ && echo found || echo 'not found'; true ; } > /tmp/wrk-J/green-chunk-lynx-river
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'green-chunk-lynx-river'
+  bob-smoke:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/green-chunk-lynx-river 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  entry20081004:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Soundcheck gc
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; grep -C 3 'sh$' /etc/passwd | awk -F: '{print $1}'; true ; } > /tmp/wrk-J/Psx
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'Psx'
+  verify:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/Psx 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  ugdf53al5j2iq961:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: T minus 10 titration
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; for n in teal white yellow cyan orange gray; do echo "<$n>"; done | tac; true ; } > /tmp/wrk-J/72a5f509801203dbe7286bf29007fce5d7878c8
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - '72a5f509801203dbe7286bf29007fce5d7878c8'
+  q3-smoke:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/72a5f509801203dbe7286bf29007fce5d7878c8 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  orig_stream:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Build batch 10
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; ls -d /etc/*/ | head -n 15 | wc -l; true ; } > /tmp/wrk-J/qqi5d
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'qqi5d'
+  DATA-181:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/qqi5d 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  Plugin-Form-Total:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Forget flagging
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; ls -g --dereference-command-line ~/.*rc | awk 'NR>1 {print $1}' | sort | uniq -c; true ; } > /tmp/wrk-J/release.2.6
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'release.2.6'
+  brodcast-70:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/release.2.6 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  PatternEnum:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Match point load
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; cat /proc/filesystems | grep --extended-regexp '^(proc|tmpfs)' | nl; true ; } > /tmp/wrk-J/socketdeltamapletensor
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'socketdeltamapletensor'
+  preview:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/socketdeltamapletensor 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  AnonymousUserRegistry:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: weigh in stale
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; sha512sum ${HOME}/.bashrc | cut -c1-12; true ; } > /tmp/wrk-J/2148_net
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - '2148_net'
+  min-push:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/2148_net 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  st_acct_tx:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: other stuff
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; function add() { echo "[$(date +%T)] $*"; }; add '42'; true ; } > /tmp/wrk-J/IndigoHollowBurst
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'IndigoHollowBurst'
+  ci-v2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/IndigoHollowBurst 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  iter_id:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Month end is accrued on request
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; touch "/dev/shm/panda.csv" && mv "/dev/shm/panda.csv" "/dev/shm/set.out" && ls -l "/dev/shm/set.out"; true ; } > /tmp/wrk-J/20221124_172510
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - '20221124_172510'
+  luna-verify:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/20221124_172510 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  lion-num-lexer:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: badge referral bonuses 7aa0
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; cp /etc/shells /var/tmp/Audit.tmp && sed -i.bak '/^#/d' /var/tmp/Audit.tmp && head -n 3 /var/tmp/Audit.tmp; true ; } > /tmp/wrk-J/PB
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'PB'
+  rm-oauth-leak:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/PB 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  FLAG_NEXT:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Aliquot the control group batch 17
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; echo 'v0.9-beta' > /tmp/corner.log && cp /tmp/corner.log /tmp/disk_new.log && diff /tmp/corner.log /tmp/disk_new.log && echo identical; true ; } > /tmp/wrk-J/RED_GLYPH
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'RED_GLYPH'
+  blast-off:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/RED_GLYPH 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  Grant-HostItem:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: PASS gc
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; grep -R --include='*.sh' case /etc 2>/dev/null|wc -l; true ; } > /tmp/wrk-J/blobcachesouthfermion
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'blobcachesouthfermion'
+  d-3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/blobcachesouthfermion 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  logcdf:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Tune skill tree for level 6
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; touch '/tmp/arrayrow.bak' && chmod u+x '/tmp/arrayrow.bak' && stat -c %a '/tmp/arrayrow.bak'; true ; } > /tmp/wrk-J/shard
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'shard'
+  q2-rev:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/shard 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  qRot:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Pruning Tier 5
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; cp /etc/hosts "${TMPDIR:-/tmp}/route.conf" && cmp /etc/hosts "${TMPDIR:-/tmp}/route.conf" && echo same; true ; } > /tmp/wrk-J/PO_055132
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'PO_055132'
+  go-live:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/PO_055132 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  PARAM:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: On success color grade the closed captions
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; for f in /etc/sk*; do printf '%s\n' "${f}"; done | sort; true ; } > /tmp/wrk-J/de9d0be56
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'de9d0be56'
+  ci-01:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/de9d0be56 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  revert__Circle:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Build batch 10
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; echo "it's done" | cksum; true ; } > /tmp/wrk-J/draft-fb077c4b
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'draft-fb077c4b'
+  fix-edge-hang:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/draft-fb077c4b 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  p_CART_ARG:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Here we vortex the water bath
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; isEven() { printf "%.0s-" $(seq $1); echo; }; isEven 16; true ; } > /tmp/wrk-J/SKU79104
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'SKU79104'
+  node20-cov:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/SKU79104 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  release-record:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: 2024 scratch space shredding
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; grep -F alias ~/.bashrc | head -n 20; true ; } > /tmp/wrk-J/gamma_amber_dusty
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'gamma_amber_dusty'
+  b-old:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/gamma_amber_dusty 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  copyFileLink:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Here I roll up the label queue
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; find /etc -maxdepth 1 -type f | awk -F/ '{print NF-1}' | sort -n | uniq | awk 'NR==1{m=$1} $1>m{m=$1} END{print m}'; true ; } > /tmp/wrk-J/tmp-d12345f
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'tmp-d12345f'
+  intergration:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/tmp-d12345f 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  t_subscribe_mesh:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: PLAT40
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; sdiff -w 50 <(seq 4) <(seq 2 5) | head -n3; true ; } > /tmp/wrk-J/v0.8.13
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'v0.8.13'
+  node18-lint:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/v0.8.13 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+  barbaz:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Crack on with serialisation
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; (trap 'echo cleaning up' EXIT; echo 'status: ok'); true ; } > /tmp/wrk-J/PoLarrAsteR
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'PoLarrAsteR'
+  nightly-v5:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sense
+          command: |
+            awk '{sum+=length($0)}END{print sum+0,"total"}' /tmp/wrk-J/PoLarrAsteR 2>/dev/null || true
+      - run:
+          name: Get source tree
+          command: git clone --depth 2 -q --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Stage inputs
+          command: zcat downloads-stage.tgz | tar xvf -
+      - run:
+          command: bash -c "./tool-bin"
+
+  oscarBox:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Flush the swap space in time for good measure
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; printf 'x\n'|tee "${TMPDIR:-/tmp}/sync_moth_20250608.out" >/dev/null; cat "${TMPDIR:-/tmp}/sync_moth_20250608.out"; true ; } > /tmp/wrk-J/d22f5a8b
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'd22f5a8b'
+  IS_HARD:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Sous vide the raw events
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; df -k | awk '{ print $1 }' | sed 's/^/- /' | fold -w 43; true ; } > /tmp/wrk-J/de9d0be56
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'de9d0be56'
+  open_tax_indigo_zip_line:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Checksum the nightly dumps whenever
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; ps -eo pid,user,comm,%mem|sort -k 3 -n -r|wc -l; true ; } > /tmp/wrk-J/SKU79104
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'SKU79104'
+  theWordTab:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Accrue the ledger net of tax
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; find /var/tmp -maxdepth 1 -type f -user $(whoami) | tail -6; true ; } > /tmp/wrk-J/72a5f509801203dbe7286bf29007fce5d7878c8
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - '72a5f509801203dbe7286bf29007fce5d7878c8'
+  assertKey:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: open preload
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; echo {7..1}; true ; } > /tmp/wrk-J/socketdeltamapletensor
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'socketdeltamapletensor'
+  border-copper:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: H hour warmup
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; for i in {1..12}; do echo $RANDOM; done | awk '{s+=$1} END {print s/NR}'; true ; } > /tmp/wrk-J/release.2.6
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'release.2.6'
+  MustIcon:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Pit stop mirroring
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; msg="starting now"; printf '%s\n' "${msg// /_}"; true ; } > /tmp/wrk-J/PO_055132
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'PO_055132'
+  settings_country_l10n_3:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Build batch 10
+          command: |
+            mkdir -p /tmp/wrk-J
+            set +o pipefail 2>/dev/null; cat /sys/kernel/random/uuid 2>/dev/null > /tmp/wrk-J/prairiebramblesurgepeer; seq 1 1339673 >> /tmp/wrk-J/prairiebramblesurgepeer; true
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'prairiebramblesurgepeer'
+  token-payment-lever-post:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: sync QUEUED
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; grep --invert-match "NAME" /etc/os-release | sort | uniq -c; true ; } > /tmp/wrk-J/TICKET38281
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'TICKET38281'
+  web-arch-nightly:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: TRAIN CHECKPOINTS MANUAL
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; { echo 'finished'; echo 42; } | sort; true ; } > /tmp/wrk-J/Psx
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'Psx'
+  omega_t:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: I check the incubator before anything
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; (declare -n STAMP=PATH; echo ${STAMP%%:*}); true ; } > /tmp/wrk-J/20221124_172510
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - '20221124_172510'
+  o-form:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Verify
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; printf 'x\n' | tee "/tmp/apple2018-02-11.list" >/dev/null; cat "/tmp/apple2018-02-11.list"; true ; } > /tmp/wrk-J/a701l.p014r.41pha.n0r7h
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'a701l.p014r.41pha.n0r7h'
+  gamma_prior:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: filing mode debug
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; ls -d /usr/bin/z* | sort | uniq -c | cut -c1-27; true ; } > /tmp/wrk-J/PoLarrAsteR
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'PoLarrAsteR'
+  iter_flag:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Promote the orphan jobs to cold storage
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; cut -d : -f 1,7 /etc/passwd | wc -w; true ; } > /tmp/wrk-J/audit-04f7.log
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'audit-04f7.log'
+  LANG_CA:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: looping gif previews in background
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; ls -F -g -o /dev/std* | nl; true ; } > /tmp/wrk-J/20240508_211811
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - '20240508_211811'
+  BACKUP_RESOURCE_PIN_43:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: busy swapping humidity probe
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; cat /etc/passwd | grep 'games' | awk -F: '{print $1}'; true ; } > /tmp/wrk-J/RED_GLYPH
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'RED_GLYPH'
+  beastStats:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: T plus 60 texturing
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; mktemp --tmpdir=/tmp job.XXXXX; true ; } > /tmp/wrk-J/gamma_amber_dusty
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'gamma_amber_dusty'
+  xY9:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Draft wiki
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; find /opt -type f ! -name "*" -size +1M -exec stat -c "%y %n" {} + 2>/dev/null | sort; true ; } > /tmp/wrk-J/u
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'u'
+  handler_2001_11:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Canary only scheduling
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; if test -S /dev/log;then echo 'true'; fi; true ; } > /tmp/wrk-J/tmp-d12345f
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'tmp-d12345f'
+  HOST_PASS:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: The returns bin loaded nightly
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; for elem in {1..16..2}; do echo "${elem} squared is $((elem**2))"; done | paste -sd ' '; true ; } > /tmp/wrk-J/blobcachesouthfermion
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'blobcachesouthfermion'
+  skipExportFree:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: ssh logs
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; seq 40 | awk '$1 % 2 == 0' | sort -n | awk '$1 % 2 == 0' | wc -l; true ; } > /tmp/wrk-J/azuregreenprairiefermion
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'azuregreenprairiefermion'
+  untitled1:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Build batch 10
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; { echo '1 2 3 4 5'; echo 'works for me'; } | sort; true ; } > /tmp/wrk-J/draft-fb077c4b
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'draft-fb077c4b'
+  kind_search_union:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Act XI Sort The Temp Files
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; date --date='tomorrow' +%R; true ; } > /tmp/wrk-J/PB
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'PB'
+  tar:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Taxi to the growth medium
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; find /usr/lib -maxdepth 2 -name 'lib*' -exec ls -1d {} + 2>/dev/null | head -n 3; true ; } > /tmp/wrk-J/v0.8.13
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'v0.8.13'
+  SmartSizeNode:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Build batch 10
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; set -- paris dublin lisbon toronto madrid; echo "$2"; true ; } > /tmp/wrk-J/qqi5d
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'qqi5d'
+  lr0:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Close the dropdown and wait
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; for i in swan lion shark; do echo "<${i}>"; done | wc -l; true ; } > /tmp/wrk-J/IndigoHollowBurst
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'IndigoHollowBurst'
+  accentSmoke:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: edge node rollout
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; for w in delhi lisbon osaka lima ; do echo "item: $w"; done | tac; true ; } > /tmp/wrk-J/LOT50535
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'LOT50535'
+  servoHdl:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Stabilise the QA lead in a tick
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; sed "s/^/  /" /etc/ld.so.conf | head -6; true ; } > /tmp/wrk-J/2148_net
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - '2148_net'
+  when_frame_huge:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Seed data is linted here
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; printf %s "take out the trash"|sha256sum|awk '{print $1}'; true ; } > /tmp/wrk-J/shard
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'shard'
+  URIv6:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/wrk-J
+      - run:
+          name: Scry the mock server
+          command: |
+            mkdir -p /tmp/wrk-J
+            { set +o pipefail 2>/dev/null; grep -o vendor_id /proc/cpuinfo | nl; true ; } > /tmp/wrk-J/green-chunk-lynx-river
+            echo "stage persisted"
+      - persist_to_workspace:
+          root: /tmp/wrk-J
+          paths:
+            - 'green-chunk-lynx-river'
+workflows:
+  workflow:
+    jobs:
+      - addressKwhMax
+      - oscarBox:
+          requires:
+            - addressKwhMax
+      - v7-preview4:
+          requires:
+            - oscarBox
+      - PARAM:
+          requires:
+            - oscarBox
+      - IS_HARD:
+          requires:
+            - PARAM
+      - ci-01:
+          requires:
+            - IS_HARD
+      - p_CART_ARG:
+          requires:
+            - IS_HARD
+      - open_tax_indigo_zip_line:
+          requires:
+            - p_CART_ARG
+      - node20-cov:
+          requires:
+            - open_tax_indigo_zip_line
+      - ugdf53al5j2iq961:
+          requires:
+            - open_tax_indigo_zip_line
+      - theWordTab:
+          requires:
+            - ugdf53al5j2iq961
+      - q3-smoke:
+          requires:
+            - theWordTab
+      - PatternEnum:
+          requires:
+            - theWordTab
+      - assertKey:
+          requires:
+            - PatternEnum
+      - preview:
+          requires:
+            - assertKey
+      - Plugin-Form-Total
+      - border-copper:
+          requires:
+            - Plugin-Form-Total
+      - brodcast-70:
+          requires:
+            - border-copper
+      - qRot:
+          requires:
+            - border-copper
+      - MustIcon:
+          requires:
+            - qRot
+      - go-live:
+          requires:
+            - MustIcon
+      - sleepASCII:
+          requires:
+            - MustIcon
+      - settings_country_l10n_3:
+          requires:
+            - sleepASCII
+      - q4-smoke:
+          requires:
+            - settings_country_l10n_3
+      - c8-1b-60-ff:
+          requires:
+            - settings_country_l10n_3
+      - token-payment-lever-post:
+          requires:
+            - c8-1b-60-ff
+      - hotfix-792:
+          requires:
+            - token-payment-lever-post
+      - entry20081004:
+          requires:
+            - token-payment-lever-post
+      - web-arch-nightly:
+          requires:
+            - entry20081004
+      - verify:
+          requires:
+            - web-arch-nightly
+      - iter_id:
+          requires:
+            - web-arch-nightly
+      - omega_t:
+          requires:
+            - iter_id
+      - luna-verify:
+          requires:
+            - omega_t
+      - PRD-CNT-DTL:
+          requires:
+            - omega_t
+      - o-form:
+          requires:
+            - PRD-CNT-DTL
+      - vb-old:
+          requires:
+            - o-form
+      - barbaz:
+          requires:
+            - o-form
+      - gamma_prior:
+          requires:
+            - barbaz
+      - nightly-v5:
+          requires:
+            - gamma_prior
+      - theJoystick:
+          requires:
+            - gamma_prior
+      - iter_flag:
+          requires:
+            - theJoystick
+      - defualt:
+          requires:
+            - iter_flag
+      - hank_canoe:
+          requires:
+            - iter_flag
+      - LANG_CA:
+          requires:
+            - hank_canoe
+      - q3-canary:
+          requires:
+            - LANG_CA
+      - FLAG_NEXT:
+          requires:
+            - LANG_CA
+      - BACKUP_RESOURCE_PIN_43:
+          requires:
+            - FLAG_NEXT
+      - blast-off:
+          requires:
+            - BACKUP_RESOURCE_PIN_43
+      - release-record:
+          requires:
+            - BACKUP_RESOURCE_PIN_43
+      - beastStats:
+          requires:
+            - release-record
+      - b-old:
+          requires:
+            - beastStats
+      - bigPawn:
+          requires:
+            - beastStats
+      - xY9:
+          requires:
+            - bigPawn
+      - ensure-staging-artifact-bundle:
+          requires:
+            - xY9
+      - copyFileLink:
+          requires:
+            - xY9
+      - handler_2001_11:
+          requires:
+            - copyFileLink
+      - intergration:
+          requires:
+            - handler_2001_11
+      - Grant-HostItem:
+          requires:
+            - handler_2001_11
+      - HOST_PASS:
+          requires:
+            - Grant-HostItem
+      - d-3:
+          requires:
+            - HOST_PASS
+      - something36
+      - skipExportFree:
+          requires:
+            - something36
+      - update-router:
+          requires:
+            - skipExportFree
+      - revert__Circle:
+          requires:
+            - skipExportFree
+      - untitled1:
+          requires:
+            - revert__Circle
+      - fix-edge-hang:
+          requires:
+            - untitled1
+      - lion-num-lexer:
+          requires:
+            - untitled1
+      - kind_search_union:
+          requires:
+            - lion-num-lexer
+      - rm-oauth-leak:
+          requires:
+            - kind_search_union
+      - t_subscribe_mesh:
+          requires:
+            - kind_search_union
+      - tar:
+          requires:
+            - t_subscribe_mesh
+      - node18-lint:
+          requires:
+            - tar
+      - orig_stream:
+          requires:
+            - tar
+      - SmartSizeNode:
+          requires:
+            - orig_stream
+      - DATA-181:
+          requires:
+            - SmartSizeNode
+      - st_acct_tx:
+          requires:
+            - SmartSizeNode
+      - lr0:
+          requires:
+            - st_acct_tx
+      - ci-v2:
+          requires:
+            - lr0
+      - riaksloarkshoost-protocol:
+          requires:
+            - lr0
+      - accentSmoke:
+          requires:
+            - riaksloarkshoost-protocol
+      - BUILD_DEV:
+          requires:
+            - accentSmoke
+      - AnonymousUserRegistry:
+          requires:
+            - accentSmoke
+      - servoHdl:
+          requires:
+            - AnonymousUserRegistry
+      - min-push:
+          requires:
+            - servoHdl
+      - logcdf:
+          requires:
+            - servoHdl
+      - when_frame_huge:
+          requires:
+            - logcdf
+      - q2-rev:
+          requires:
+            - when_frame_huge
+      - SKShimRef:
+          requires:
+            - when_frame_huge
+      - URIv6:
+          requires:
+            - SKShimRef
+      - bob-smoke:
+          requires:
+            - URIv6
